@@ -95,3 +95,55 @@ Screenshot after successful launch:
 
 # Day 1
 
+<details>
+ <summary> Objectives </summary>
+To simulate RTL of a 2x1 mux. RTL and testbech is provided by VSD. Tool used is iverilog.
+
+To view the waveform of the simulated 2x1 mux. Tool used is gtkwave.
+
+To synthesize the 2x1 mux RTL and then generate synthesized RTL netlist. Tool used is Yosys.
+
+</details>
+
+<details>
+ <summary> 2x1 mux reference codes </summary>
+The RTL (good_mux.v), its testbench (tb_good_mux.v) and .lib files for 2x1 mux are provided by VSD, also present at https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+
+</details>
+
+<details>
+ <summary> simulation and waveform </summary>
+ 
+ Steps followed to simulate and view the waveforms for 2x1 mux:
+	
+ ```bash
+ iverilog <name verilog: good_mux.v> <name testbench: tb_good_mux.v>
+ ./a.out
+ gtkwave tb_good_mux.vcd
+ ```
+	
+ Screenshot for waveform in gtkviews:
+	
+![1_good_mux_waveform](https://github.com/tgupta10/VSD_HDP/assets/86391769/6eb9dfb8-27e7-4e09-b44c-fa6c057d2bef)
+
+ </details>
+
+ </details>
+<details>
+ <summary> Synthesis </summary>
+		
+Steps followed for Synthesis of 2x1 mux:
+		
+```bash		
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog <name of verilog file: multiple_modules.v>
+yosys> synth -top <name: sub_module1>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> show <name: sub_module1>
+```
+	
+Screen shot synthesized 2x1 mux:
+		
+![3_synthesised_design](https://github.com/tgupta10/VSD_HDP/assets/86391769/3ee15cc1-bee9-4800-9097-c2cdf9e8ecde)
+		
+</details>
