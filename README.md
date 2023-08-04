@@ -145,5 +145,17 @@ yosys> show <name: sub_module1>
 Screen shot synthesized 2x1 mux:
 		
 ![3_synthesised_design](https://github.com/tgupta10/VSD_HDP/assets/86391769/3ee15cc1-bee9-4800-9097-c2cdf9e8ecde)
+
+Steps followed to generate synthesized verilog netlist:
+ ```bash
+ yosys> write_verilog <file_name_netlist.v>
+ yosys> write_verilog -noattr <file_name_netlist.v>
+ ```
+ 
+ Screenshot of the synthesized netlist:
+ 
+![4_synthesised_netlist](https://github.com/tgupta10/VSD_HDP/assets/86391769/03741a86-6d61-4bbd-a358-8335f8e92607)
+
+ 
 		
 </details>
