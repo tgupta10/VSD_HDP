@@ -7,6 +7,8 @@ Shortcuts:
 
 [Day 1](#day-1)
 
+[Day 2](#day-2)
+
 # Day 0
 
 <details>
@@ -158,4 +160,59 @@ Steps followed to generate synthesized verilog netlist:
 
  
 		
+</details>
+
+# Day 2
+
+<details>
+ <summary> Objectives </summary>
+To synthesize and analyise heirarchical and flatten netlist for module "multiple_modules"
+
+To synthesize sub module "sub_module1" from module "multiple_modules" 
+</details>
+<details>
+ <summary> Reference codes </summary>
+The RTL for multiple module (multiple_modules.v), the D-flipflop with asynchronous reset (dff_asyncres.v), the D-flipflop with asynchronous set (dff_async_set.v), the D-flipflop with synchronous reset (dff_syncres.v), their respective testbenches (tb_*), mult_2.v and mult_8.v are provided by VSD, also present at:
+	
+https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+</details>
+<details>
+ <summary> Hier vs flatten Synthesis for module multiple_modules </summary>
+
+![1_synthesis_multiple_modules](https://github.com/tgupta10/VSD_HDP/assets/86391769/bb8778f6-4448-42dd-b5e0-111b79a95ab2)
+![2_synthesized_netlist_multiple_modules_hier](https://github.com/tgupta10/VSD_HDP/assets/86391769/3f9cab6f-4609-4f6a-8f25-e9713e713396)
+![3_synthesis_multiple_modules_flat](https://github.com/tgupta10/VSD_HDP/assets/86391769/b1b8995a-e7a2-4f43-9bb5-78da69c3589c)
+![4_synthesized_netlist_multiple_modules_flat](https://github.com/tgupta10/VSD_HDP/assets/86391769/caae8187-3d27-4abd-8515-930833d877b3)
+
+</details>
+<details>
+ <summary> sub module synthesis for sub_module1 </summary>
+![5_synthesis_sub_module1](https://github.com/tgupta10/VSD_HDP/assets/86391769/61fa0b0e-c66a-4e8b-a117-6fe01e68c1c2)
+
+</details>
+<details>
+ <summary> Simulation & Synthesis: DFF asynchronous reset </summary>
+![6_dff_async_reset_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/84cfb665-2755-4e7a-b7b6-792d157da383)
+![7_dff_async_reset_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/6a3f95d3-1b75-426a-9772-f7107628099f)
+
+</details>
+<details>
+ <summary> Simulation & Synthesis: DFF asynchronous set </summary>
+![8_dff_async_set_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/3b1c450a-bc14-45d3-b088-28481ab8a095)
+![9_dff_async_set_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/8fed6cbb-6cc6-459c-a2c0-1ce663f4ebc9)
+
+</details>
+<details>
+ <summary> Simulation & Synthesis: DFF synchronous reset </summary>
+![10_dff_sync_reset_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/9ba0b44d-3de7-4ff1-8448-79bdde92144a)
+![11_dff_sync_reset_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/fccdf6c4-c34c-4417-9e7e-690e859119c6)
+
+</details>
+<details>
+ <summary> Synthesis: mult_2 </summary>
+
+</details>
+<details>
+ <summary> Synthesis: mult_8 </summary>
+
 </details>
