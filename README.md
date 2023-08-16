@@ -9,6 +9,12 @@ Shortcuts:
 
 [Day 2](#day-2)
 
+[Day 3](#day-3)
+
+[Day 4](#day-4)
+
+[Day 5](#day-5)
+
 # Day 0
 
 <details>
@@ -124,7 +130,7 @@ The RTL (good_mux.v), its testbench (tb_good_mux.v) and .lib files for 2x1 mux a
  gtkwave tb_good_mux.vcd
  ```
 	
- Screenshot for waveform in gtkviews:
+ Screenshot for waveform in gtkview:
 	
 ![1_good_mux_waveform](https://github.com/tgupta10/VSD_HDP/assets/86391769/6eb9dfb8-27e7-4e09-b44c-fa6c057d2bef)
 
@@ -179,32 +185,47 @@ https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 <details>
  <summary> Hier vs flatten Synthesis for module multiple_modules </summary>
 
+Screenshot for hierarchical synthesis of multiple_module:
 ![1_synthesis_multiple_modules](https://github.com/tgupta10/VSD_HDP/assets/86391769/bb8778f6-4448-42dd-b5e0-111b79a95ab2)
+Screenshot of synthesized RTL netlist after hierarchical synthesis of multiple_module:
 ![2_synthesized_netlist_multiple_modules_hier](https://github.com/tgupta10/VSD_HDP/assets/86391769/3f9cab6f-4609-4f6a-8f25-e9713e713396)
+Screenshot for flattened synthesis of multiple_module:
 ![3_synthesis_multiple_modules_flat](https://github.com/tgupta10/VSD_HDP/assets/86391769/b1b8995a-e7a2-4f43-9bb5-78da69c3589c)
+Screenshot of synthesized RTL netlist after flattened synthesis of multiple_module:
 ![4_synthesized_netlist_multiple_modules_flat](https://github.com/tgupta10/VSD_HDP/assets/86391769/caae8187-3d27-4abd-8515-930833d877b3)
 
 </details>
 <details>
  <summary> sub module synthesis for sub_module1 </summary>
+
+Screenshot for sub module synthesis of sub_module: 
 ![5_synthesis_sub_module1](https://github.com/tgupta10/VSD_HDP/assets/86391769/61fa0b0e-c66a-4e8b-a117-6fe01e68c1c2)
 
 </details>
 <details>
  <summary> Simulation & Synthesis: DFF asynchronous reset </summary>
+
+Screenshot of waveform for dff_async_reset:
 ![6_dff_async_reset_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/84cfb665-2755-4e7a-b7b6-792d157da383)
+Screenshot of synthesis for dff_async_reset:
 ![7_dff_async_reset_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/6a3f95d3-1b75-426a-9772-f7107628099f)
 
 </details>
 <details>
  <summary> Simulation & Synthesis: DFF asynchronous set </summary>
+
+Screenshot of waveform for dff_async_set:
 ![8_dff_async_set_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/3b1c450a-bc14-45d3-b088-28481ab8a095)
+Screenshot of synthesis for dff_async_set:
 ![9_dff_async_set_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/8fed6cbb-6cc6-459c-a2c0-1ce663f4ebc9)
 
 </details>
 <details>
  <summary> Simulation & Synthesis: DFF synchronous reset </summary>
+
+ Screenshot of waveform for dff_sync_reset:
 ![10_dff_sync_reset_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/9ba0b44d-3de7-4ff1-8448-79bdde92144a)
+Screenshot of synthesis for dff_sync_reset:
 ![11_dff_sync_reset_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/fccdf6c4-c34c-4417-9e7e-690e859119c6)
 
 </details>
@@ -214,5 +235,26 @@ https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 </details>
 <details>
  <summary> Synthesis: mult_8 </summary>
+
+</details>
+
+# Day 3
+
+<details>
+ <summary> Objectives </summary>
+
+</details>
+
+# Day 4
+
+<details>
+ <summary> Objectives </summary>
+
+</details>
+
+# Day 5 
+
+<details>
+ <summary> Objectives </summary>
 
 </details>
