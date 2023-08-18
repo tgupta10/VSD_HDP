@@ -172,9 +172,13 @@ Steps followed to generate synthesized verilog netlist:
 
 <details>
  <summary> Objectives </summary>
-To synthesize and analyise heirarchical and flatten netlist for module "multiple_modules"
+To synthesize and analyise heirarchical and flatten netlist for module "multiple_modules".
 
-To synthesize sub module "sub_module1" from module "multiple_modules" 
+To synthesize sub module "sub_module1" from module "multiple_modules". 
+
+To analyse different coding styles if DFF by simulating and synthesizing.
+
+To analyse special cases of mux2 and mux8 designs by optimizing their synthesis.
 </details>
 <details>
  <summary> Reference codes </summary>
@@ -185,10 +189,29 @@ https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 <details>
  <summary> Hier vs flatten Synthesis for module multiple_modules </summary>
 
+Steps followed for Synthesis of module multiple_modules:
+ 
+```bash		
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog <name of verilog file: multiple_modules.v>
+yosys> synth -top <name: multiple_modules>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> show <name: multiple_modules>
+yosys> write_verilog -noattr <name: multiple_modules_hier.v>
+```
+
 Screenshot for hierarchical synthesis of multiple_module:
 ![1_synthesis_multiple_modules](https://github.com/tgupta10/VSD_HDP/assets/86391769/bb8778f6-4448-42dd-b5e0-111b79a95ab2)
 Screenshot of synthesized RTL netlist after hierarchical synthesis of multiple_module:
 ![2_synthesized_netlist_multiple_modules_hier](https://github.com/tgupta10/VSD_HDP/assets/86391769/3f9cab6f-4609-4f6a-8f25-e9713e713396)
+
+Additional steps used in flattened synthesis of multiple_module:
+		
+```bash
+yosys> flatten
+yosys> write_verilog -noattr <name: multiple_modules_flat.v>
+```
+
 Screenshot for flattened synthesis of multiple_module:
 ![3_synthesis_multiple_modules_flat](https://github.com/tgupta10/VSD_HDP/assets/86391769/b1b8995a-e7a2-4f43-9bb5-78da69c3589c)
 Screenshot of synthesized RTL netlist after flattened synthesis of multiple_module:
@@ -198,15 +221,42 @@ Screenshot of synthesized RTL netlist after flattened synthesis of multiple_modu
 <details>
  <summary> sub module synthesis for sub_module1 </summary>
 
-Screenshot for sub module synthesis of sub_module: 
+Steps used for sub module synthesis of sub_module1
+
+```bash		
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog <name of verilog file: multiple_modules.v>
+yosys> synth -top <name: sub_module1>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> show <name: sub_module1>
+```
+
+Screenshot for sub module synthesis of sub_module1: 
 ![5_synthesis_sub_module1](https://github.com/tgupta10/VSD_HDP/assets/86391769/61fa0b0e-c66a-4e8b-a117-6fe01e68c1c2)
 
 </details>
 <details>
  <summary> Simulation & Synthesis: DFF asynchronous reset </summary>
 
+Steps used to view dff_asyncres waveform:
+
+```bash	
+iverilog <name verilog: dff_asyncres.v> <name testbench: tb_dff_asyncres.v>
+./a.out
+gtkwave <name vcd file: tb_dff_asyncres.vcd>
+```	
 Screenshot of waveform for dff_async_reset:
 ![6_dff_async_reset_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/84cfb665-2755-4e7a-b7b6-792d157da383)
+
+```bash
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog <name of verilog file: dff_asyncres.v>
+yosys> synth -top <name: dff_asyncres>
+yosys> dfflibmap -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> show <name: dff_asyncres>
+```
+
 Screenshot of synthesis for dff_async_reset:
 ![7_dff_async_reset_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/6a3f95d3-1b75-426a-9772-f7107628099f)
 
@@ -214,8 +264,24 @@ Screenshot of synthesis for dff_async_reset:
 <details>
  <summary> Simulation & Synthesis: DFF asynchronous set </summary>
 
+```bash	
+iverilog <name verilog: dff_async_set.v> <name testbench: tb_dff_async_set.v>
+./a.out
+gtkwave <name vcd file: tb_dff_async_set.vcd>
+```
+
 Screenshot of waveform for dff_async_set:
 ![8_dff_async_set_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/3b1c450a-bc14-45d3-b088-28481ab8a095)
+
+```bash
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog <name of verilog file: dff_async_set.v>
+yosys> synth -top <name: dff_async_set>
+yosys> dfflibmap -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> show <name: dff_async_set>
+```
+
 Screenshot of synthesis for dff_async_set:
 ![9_dff_async_set_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/8fed6cbb-6cc6-459c-a2c0-1ce663f4ebc9)
 
@@ -223,8 +289,24 @@ Screenshot of synthesis for dff_async_set:
 <details>
  <summary> Simulation & Synthesis: DFF synchronous reset </summary>
 
+```bash	
+iverilog <name verilog: dff_syncres.v> <name testbench: tb_dff_syncres.v>
+./a.out
+gtkwave <name vcd file: tb_dff_syncres.vcd>
+```
+
  Screenshot of waveform for dff_sync_reset:
 ![10_dff_sync_reset_wave](https://github.com/tgupta10/VSD_HDP/assets/86391769/9ba0b44d-3de7-4ff1-8448-79bdde92144a)
+
+```bash
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog <name of verilog file: dff_syncres.v>
+yosys> synth -top <name: dff_syncres>
+yosys> dfflibmap -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> show <name: dff_syncres>
+```
+
 Screenshot of synthesis for dff_sync_reset:
 ![11_dff_sync_reset_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/fccdf6c4-c34c-4417-9e7e-690e859119c6)
 
@@ -232,9 +314,32 @@ Screenshot of synthesis for dff_sync_reset:
 <details>
  <summary> Synthesis: mult_2 </summary>
 
+```bash
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog <name of verilog file: mult_2.v>
+yosys> synth -top <name: mul2>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> show <name: mul2>
+yosys> write_verilog -noattr <name: mul2_net.v>
+```
+![12_mul_@_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/34ea923b-764e-4609-9cf5-99d709b5e244)
+
+
 </details>
 <details>
  <summary> Synthesis: mult_8 </summary>
+
+```bash
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog <name of verilog file: mult_8.v>
+yosys> synth -top <name: mult8>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> show <name: mult8>
+yosys> write_verilog -noattr <name: mult8_net.v>
+```
+
+![13_mul_8_synth](https://github.com/tgupta10/VSD_HDP/assets/86391769/c717b20b-9c08-4d00-8d04-bd1d971dd6ea)
+
 
 </details>
 
