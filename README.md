@@ -527,7 +527,8 @@ yosys> show
 	
 Below is the screenshot of the obtained optimized design:
 	
-<img width="506" alt="dff_const1_synth" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/1809d6c2-f10e-404c-bd4a-6d8de7157bfb">
+![8_synth_dff_const1](https://github.com/tgupta10/VSD_HDP/assets/86391769/38d03b34-7dda-45de-a8aa-9e822318293d)
+
 
 
 
@@ -562,7 +563,8 @@ yosys> show
 	
 Below is the screenshot of the obtained optimized design:
 	
-<img width="438" alt="dff_const2_synth" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/37d60203-d433-4e23-92fd-92b9d2d20334">
+![10_synth_dff_const2](https://github.com/tgupta10/VSD_HDP/assets/86391769/3ac15b3c-2bfc-47c0-83a9-4dfa7017c19a)
+
 
 
 </details>
@@ -597,7 +599,8 @@ yosys> show
 	
 Below is the screenshot of the obtained design, the 2 flipflops are retained and optimization could not remove any of them:
 
-<img width="651" alt="dff_const3synth" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/0e5f3ab6-d7e7-410d-a007-e0da72123889">
+![12_synth_dff_const3](https://github.com/tgupta10/VSD_HDP/assets/86391769/0bd4a061-ca6a-4fb7-bb55-bc942ea5616f)
+
 
 
 </details>
@@ -631,7 +634,8 @@ yosys> show
 	
 Below is the screenshot of the obtained optimized design, and no hardware was used as expected:
 	
-<img width="424" alt="dff_const4_synth" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/b229eeee-ea9e-4058-ba1b-2688f440aadb">
+![14_synth_dff_const4](https://github.com/tgupta10/VSD_HDP/assets/86391769/d5434b75-05e7-4b34-b1ee-41b533580ce6)
+
 
 </details>
 	
@@ -663,8 +667,9 @@ yosys> show
 ```
 	
 Below is the screenshot of the obtained optimized design, and the 2 flipflops are retained:
-	
-<img width="629" alt="dff_const5_synth" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/b4a8e84a-f1ad-4e2f-9120-199bd7424114">
+
+![16_synth_dff_const5](https://github.com/tgupta10/VSD_HDP/assets/86391769/3b468c06-ae54-43d8-861a-3fd1f0912abb)
+
 
 </details>
 	
