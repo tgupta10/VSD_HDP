@@ -354,6 +354,8 @@ To analyse sequential logic optimization.
 
 To analyse sequential logic optimization for unused outputs. 
 
+To analyse sequential logic optimization for a counter design. 
+
 </details>
 
 <details>
@@ -366,9 +368,9 @@ https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 </details>
 	
 <details>
- <summary> Combinational logic optimizations: opt_check.v </summary>
+ <summary> Combinational logic optimizations for opt_check.v </summary>
 
-Steps followed to check waveform of synthesized design of opt_check.v after optimization:
+Steps followed to synthesize design of opt_check.v after optimization:
 	
 ```bash
 yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
@@ -387,7 +389,7 @@ Snapshot for optimized opt_check.v design:
 </details>
 	
 <details>
- <summary> Combinational logic optimizations: opt_check2.v </summary>
+ <summary> Combinational logic optimizations for opt_check2.v </summary>
 
  Steps followed to check waveform of synthesized design of opt_check2.v after optimization:
 	
@@ -408,7 +410,7 @@ Snapshot for optimized opt_check2.v design:
 </details>
 	
 <details>
- <summary> Combinational logic optimizations: opt_check3.v </summary>
+ <summary> Combinational logic optimizations for opt_check3.v </summary>
 	
  Steps followed to check waveform of synthesized design of opt_check3.v after optimization:
 	
@@ -430,7 +432,7 @@ Snapshot for optimized opt_check3.v design:
 </details>
 	
 <details>
- <summary> Combinational logic optimizations: opt_check4.v </summary>
+ <summary> Combinational logic optimizations for opt_check4.v </summary>
 	
  Steps followed to check waveform of synthesized design of opt_check4.v after optimization:
 	
@@ -452,7 +454,7 @@ Snapshot for optimized opt_check4.v design:
 </details>
 		
 <details>
- <summary> Combinational logic optimizations: multiple_module_opt.v </summary>
+ <summary> Combinational logic optimizations for multiple_module_opt.v </summary>
 	
 Steps followed to check waveform of synthesized design of multiple_module_opt.v after optimization:
 	
@@ -474,7 +476,7 @@ Snapshot for optimized multiple_module_opt.v design:
 </details>
 	
 <details>
- <summary> Combinational logic optimizations: multiple_module_opt2.v </summary>
+ <summary> Combinational logic optimizations for multiple_module_opt2.v </summary>
 	
 Steps followed to check waveform of synthesized design of multiple_module_opt2.v after optimization:
 	
@@ -498,9 +500,9 @@ Snapshot for optimized multiple_module_opt2.v design:
 </details>
 	
 <details>
- <summary> Sequential logic optimizations: dff_const1.v </summary>
+ <summary> Sequential logic optimizations for dff_const1.v </summary>
 	
-I used the below commands to simulate the design of dff_const1.v:
+Steps followed to check waveform of dff_const1.v
 	
 ```bash
 iverilog <name verilog: dff_const1.v> <name testbench: tb_dff_const1.v>
@@ -514,7 +516,7 @@ Below is the screenshot of the obtained simulation, a we can see even when reset
 
 
 	
-I used the below commands to view the synthesized design of dff_const1.v with optimizations:
+Steps followed to check waveform of synthesized design of multiple_module_opt2.v after optimization:
 	
 ```bash
 yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
@@ -525,7 +527,7 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained optimized design:
+Snapshot for optimized dff_const1.v design:
 	
 ![8_synth_dff_const1](https://github.com/tgupta10/VSD_HDP/assets/86391769/38d03b34-7dda-45de-a8aa-9e822318293d)
 
@@ -535,9 +537,9 @@ Below is the screenshot of the obtained optimized design:
 </details>
 	
 <details>
- <summary> Sequential logic optimizations: dff_const2.v </summary>
+ <summary> Sequential logic optimizations for dff_const2.v </summary>
 	
-I used the below commands to simulate the design of dff_const2.v:
+Steps followed to check waveform of dff_const1.v
 	
 ```bash
 iverilog <name verilog: dff_const2.v> <name testbench: tb_dff_const2.v>
@@ -545,7 +547,7 @@ iverilog <name verilog: dff_const2.v> <name testbench: tb_dff_const2.v>
 gtkwave tb_dff_const2.vdc
 ```	
 
-Below is the screenshot of the obtained simulation, as we can see Q is one regardless of the value of reset and clock:
+Snapshot for optimized dff_const2.v design:
 	
 ![9_waveform_dff_const2](https://github.com/tgupta10/VSD_HDP/assets/86391769/1bb4de4a-1eaf-475d-a7e8-4db568eb1b66)
 
@@ -561,7 +563,7 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained optimized design:
+Snapshot for optimized dff_const2.v design:
 	
 ![10_synth_dff_const2](https://github.com/tgupta10/VSD_HDP/assets/86391769/3ac15b3c-2bfc-47c0-83a9-4dfa7017c19a)
 
@@ -571,9 +573,9 @@ Below is the screenshot of the obtained optimized design:
 
 	
 <details>
- <summary> Sequential logic optimizations: dff_const3.v </summary>
+ <summary> Sequential logic optimizations for dff_const3.v </summary>
 	
-I used the below commands to simulate the design of dff_const3.v:
+Steps followed to check waveform of dff_const3.v
 	
 ```bash
 iverilog <name verilog: dff_const3.v> <name testbench: tb_dff_const3.v>
@@ -597,7 +599,7 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained design, the 2 flipflops are retained and optimization could not remove any of them:
+Snapshot for optimized dff_const3.v design:
 
 ![12_synth_dff_const3](https://github.com/tgupta10/VSD_HDP/assets/86391769/0bd4a061-ca6a-4fb7-bb55-bc942ea5616f)
 
@@ -606,9 +608,9 @@ Below is the screenshot of the obtained design, the 2 flipflops are retained and
 </details>
 	
 <details>
- <summary> Sequential logic optimizations: dff_const4.v </summary>
+ <summary> Sequential logic optimizations for dff_const4.v </summary>
 	
-I used the below commands to simulate the design of dff_const4.v:
+Steps followed to check waveform of dff_const4.v:
 	
 ```bash
 iverilog <name verilog: dff_const4.v> <name testbench: tb_dff_const4.v>
@@ -632,7 +634,7 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained optimized design, and no hardware was used as expected:
+Snapshot for optimized dff_const4.v design:
 	
 ![14_synth_dff_const4](https://github.com/tgupta10/VSD_HDP/assets/86391769/d5434b75-05e7-4b34-b1ee-41b533580ce6)
 
@@ -640,9 +642,9 @@ Below is the screenshot of the obtained optimized design, and no hardware was us
 </details>
 	
 <details>
- <summary> Sequential logic optimizations: dff_const5.v </summary>
+ <summary> Sequential logic optimizations for dff_const5.v </summary>
 	
-I used the below commands to simulate the design of dff_const5.v:
+Steps followed to check waveform of dff_const5.v:
 	
 ```bash
 iverilog <name verilog: dff_const5.v> <name testbench: tb_dff_const5.v>
@@ -666,7 +668,7 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained optimized design, and the 2 flipflops are retained:
+Snapshot for optimized dff_const5.v design:
 
 ![16_synth_dff_const5](https://github.com/tgupta10/VSD_HDP/assets/86391769/3b468c06-ae54-43d8-861a-3fd1f0912abb)
 
@@ -687,9 +689,10 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained optimized design, and the only used output (count[0]) is present and 1 flipflop is used:
+Snapshot for optimized counter_opt.v design:
 	
-<img width="684" alt="counter_opt" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/10549f0f-c8d0-4bc8-8069-e14d80770a53">
+![17_synth_counter_opt](https://github.com/tgupta10/VSD_HDP/assets/86391769/9bc2c483-2aa1-4299-9191-25edd82895a7)
+
 	
 </details>
 	
@@ -707,9 +710,10 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained optimized design, and 3 flipflops are used in addition to the counting logic of all bits:
+Snapshot for optimized counter_opt2.v design:
 	
-<img width="681" alt="counter_opt2" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/0d8a2613-cae2-4ab6-a8c1-a9bece64dce1">
+![18_synth_counter_opt2](https://github.com/tgupta10/VSD_HDP/assets/86391769/635727af-1f78-4a8c-9677-fb2a862fca85)
+
 	
 </details>
 
