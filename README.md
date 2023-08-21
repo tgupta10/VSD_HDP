@@ -454,7 +454,7 @@ Snapshot for optimized opt_check4.v design:
 <details>
  <summary> Combinational logic optimizations: multiple_module_opt.v </summary>
 	
-I used the below commands to view the synthesized design of multiple_module_opt.v with optimizations:
+Steps followed to check waveform of synthesized design of multiple_module_opt.v after optimization:
 	
 ```bash
 yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
@@ -466,8 +466,8 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained optimized design, as we can see 2 and gates and 1 or gate are realized as was expected when optimizations are applied:
-	
+Snapshot for optimized multiple_module_opt.v design:
+ 
 ![5_synth_multiple_module_opt](https://github.com/tgupta10/VSD_HDP/assets/86391769/19f34cab-d7c6-4bec-a939-7be8c6fbbbe3)
 
 
@@ -476,7 +476,7 @@ Below is the screenshot of the obtained optimized design, as we can see 2 and ga
 <details>
  <summary> Combinational logic optimizations: multiple_module_opt2.v </summary>
 	
-I used the below commands to view the synthesized design of multiple_module_opt2.v with optimizations:
+Steps followed to check waveform of synthesized design of multiple_module_opt2.v after optimization:
 	
 ```bash
 yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
@@ -488,7 +488,7 @@ yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained optimized design, as we can see no standard cells are realized as was expected when optimizations are applied:
+Snapshot for optimized multiple_module_opt2.v design:
 	
 ![6_synth_multiple_module_opt2](https://github.com/tgupta10/VSD_HDP/assets/86391769/fb8b2c82-beab-439d-afba-416943e3ab38)
 
@@ -510,7 +510,8 @@ gtkwave tb_dff_const1.vdc
 
 Below is the screenshot of the obtained simulation, a we can see even when reset is zero, Q waits for next rising edge of clock:
 	
-<img width="578" alt="dff_const1" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/8833cf95-1957-4cc6-8352-80f40e99364f">
+![7_waveform_dff_const1](https://github.com/tgupta10/VSD_HDP/assets/86391769/fb9ef254-a911-4e27-b6d6-edd8f8fd27ad)
+
 
 	
 I used the below commands to view the synthesized design of dff_const1.v with optimizations:
@@ -545,7 +546,8 @@ gtkwave tb_dff_const2.vdc
 
 Below is the screenshot of the obtained simulation, as we can see Q is one regardless of the value of reset and clock:
 	
-<img width="629" alt="dff_const2" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/ba0220c8-f045-425a-b8e6-9ea8031d45f6">
+![9_waveform_dff_const2](https://github.com/tgupta10/VSD_HDP/assets/86391769/1bb4de4a-1eaf-475d-a7e8-4db568eb1b66)
+
 
 I used the below commands to view the synthesized design of dff_const2.v with optimizations:
 	
@@ -579,7 +581,8 @@ gtkwave tb_dff_const3.vdc
 
 Below is the screenshot of the obtained simulation, as we can see Q does not follow Q1 immediately:
 	
-<img width="574" alt="dff_const3" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/95620b55-a454-428a-b0c7-b021f90c1b96">
+![11_waveform_dff_const3](https://github.com/tgupta10/VSD_HDP/assets/86391769/264c7a60-ac4b-4c4d-a23b-8f682a2e0399)
+
 
 I used the below commands to view the synthesized design of dff_const3.v:
 	
@@ -612,7 +615,8 @@ gtkwave tb_dff_const4.vdc
 
 Below is the screenshot of the obtained simulation, as we can see Q and Q1 are one regardless of clk and reset:
 
-<img width="614" alt="dff_const4" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/e10cc842-c807-48c6-b491-b9022abace3d">
+![13_waveform_dff_const4](https://github.com/tgupta10/VSD_HDP/assets/86391769/bba1c44d-f1d9-489a-89a0-5651fa40beb4)
+
 	
 I used the below commands to view the synthesized design of dff_const4.v with optimizations:
 	
@@ -644,7 +648,7 @@ gtkwave tb_dff_const5.vdc
 
 Below is the screenshot of the obtained simulation, as we can see when reset is zero, Q1 becomes one on the next rising edge of clk, and Q follows Q1 on the next rising edge of clk:
 
-<img width="604" alt="dff_const5" src="https://github.com/mariamrakka/vsd-hdp/assets/49097440/1e0d481a-ea0a-45dd-82fe-4d31ece6ea97">
+![15_waveform_dff_const5](https://github.com/tgupta10/VSD_HDP/assets/86391769/8b44e444-5d40-4daf-a639-b8a86692d1ca)
 
 	
 I used the below commands to view the synthesized design of dff_const5.v with optimizations:
