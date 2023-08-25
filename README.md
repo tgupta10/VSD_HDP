@@ -722,20 +722,26 @@ Snapshot for optimized counter_opt2.v design:
 <details>
  <summary> Objectives </summary>
 
-I have performed Gate Level Simulation (GLS). GLS is when the testbench is run with the netlist as design under test to ensure there are no synthesis and simulation mismatches, and it is important as it 1-) verifies the logical correctness of the post-synthesis design and 2-) ensures the timing of design is met. Synthesis and simulation mismatches can happen due to a lot of reasons including missing sensitivity list (some signal changes are not captured by the circuit because they are missing from the sensitivity list), blocking vs non-blocking assignments (inside an always block, "=" statements inside it are blocking meaning they are executed in order they are written, assignments (<=) on the other hand are non-blocking so they are executed in parallel => non-blocking should be used with sequential circuits. Note that the synthesis will yield same circuit with blocking and non-blockin; it will yield what would be obtained as if the statements where written in non-blocking format, so in case they weren't written as such a mismatch will occur with the simulation), and non-standard verilog coding.
+
+To perform RTL simulation, synthesis and GLS simulation for ternary_operator_mux.v. Compare the RTL and Gate level simulation results. 
+
+To perform RTL simulation, synthesis and GLS simulation for bad_mux.v. Compare the RTL and Gate level simulation results. 
+
+To perform RTL simulation, synthesis and GLS simulation for blocking_caveat.v. Compare the RTL and Gate level simulation results. 
 	
 </details>
 	
 <details>
- <summary> Verilog codes </summary>
-The verilog codes (*_mux.v and blocking_caveat.v) are taken from https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+ <summary> Reference codes </summary>
 
+	The RTL codes (*_mux.v and blocking_caveat.v) are  are provided by VSD, also present at https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
+	
 </details>
 	
 <details>
  <summary> Simulation, synthesis, and GLS: ternary_operator_mux.v </summary>
 
-I used the below commands to simulate the design of ternary_operator_mux.v:
+Steps used to see waveform for ternary_operator_mux.v:
 	
 ```bash
 iverilog <name verilog: ternary_operator_mux.v> <name testbench: tb_ternary_operator_mux.v>
@@ -743,12 +749,12 @@ iverilog <name verilog: ternary_operator_mux.v> <name testbench: tb_ternary_oper
 gtkwave tb_ternary_operator_mux.vdc
 ```	
 
-Below is the screenshot of the obtained simulation, we can see that when sel is high y follows i1, and when sel is low y follows i0:
+Snapshot for simulation run on RTL netlist :
 
 ![1_waveform_pre_synth_ternary_operator](https://github.com/tgupta10/VSD_HDP/assets/86391769/171c0e81-a639-488b-99c2-f489ad3e35e5)
 
 
-I used the below commands to synthesize the design into a netlist and view the synthesized design of ternary_operator_mux.v:
+Steps followed to run synthesis and write GLS netlist for ternary_operator_mux.v:
 	
 ```bash
 yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
@@ -759,17 +765,17 @@ yosys> write_verilog -noattr <name of netlist: ternary_operator_mux_net.v>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained design:
+Snapshot for synthesized design:
 
 ![2_synth_ternary_operator](https://github.com/tgupta10/VSD_HDP/assets/86391769/04b1359f-090e-4fba-b718-52ccd423525b)
 
 
-Below is the screenshot of the obtained netlist:
+Snapshot for GLS netlist:
 	
 ![3_GLS_netlist_ternary_operator](https://github.com/tgupta10/VSD_HDP/assets/86391769/1aea8305-5822-4524-ae53-da3db1cd61b7)
 
 
-I used the below commands to carry out GLS of ternary_operator_mux.v:
+steps followed for GLS simulation:
 	
 ```bash
 iverilog <path to verilog model: ../mylib/verilog_model/primitives.v> <path to sky130_fd_sc_hd__tt_025C_1v80.lib: ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib> <name netlist: ternary_operator_mux_net.v> <name testbench: tb_ternary_operator_mux.v>
@@ -777,7 +783,7 @@ iverilog <path to verilog model: ../mylib/verilog_model/primitives.v> <path to s
 gtkwave tb_ternary_operator_mux.vdc
 ```	
 	
-Below is the screenshot of the obtained simulation, and this matches with pre-synthesis simulation:
+Snapshot of simulation run with GLS netlist, it matches with original simulation of RTL netlist:
 	
 ![4_waveform_GLS_ternary_operator](https://github.com/tgupta10/VSD_HDP/assets/86391769/b4499876-b74f-4008-86d9-2139179de598)
 
@@ -788,7 +794,7 @@ Below is the screenshot of the obtained simulation, and this matches with pre-sy
 <details>
  <summary> Simulation, synthesis, and GLS: bad_mux.v </summary>
 
-I used the below commands to simulate the design of bad_mux.v:
+Steps followed to run RTL simulation for bad_mux.v:
 	
 ```bash
 iverilog <name verilog: bad_mux.v> <name testbench: tb_bad_mux.v>
@@ -796,13 +802,13 @@ iverilog <name verilog: bad_mux.v> <name testbench: tb_bad_mux.v>
 gtkwave tb_bad_mux.vdc
 ```	
 
-Below is the screenshot of the obtained simulation, we can see that when inputs change, y is not evaluated which is wrong behavior:
+snapshot for RTL simulation waveform :
 
 ![5_waveform_pre_synth_bad_mux](https://github.com/tgupta10/VSD_HDP/assets/86391769/ca6bd07f-c24e-4aec-9374-481309dd5ab3)
 
 
 
-I used the below commands to synthesize the design into a netlist and view the synthesized design of bad_mux.v:
+Steps followed to run synthesis and write GLS netlist for bad_mux.v:
 	
 ```bash
 yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
@@ -813,18 +819,18 @@ yosys> write_verilog -noattr <name of netlist: bad_mux_net.v>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained design:
+Snapshot for synthesised design:
 
 ![6_synth_bad_mux](https://github.com/tgupta10/VSD_HDP/assets/86391769/92224f7a-6da6-47a0-8650-e35c8cab0224)
 
 
 	
-Below is the screenshot of the obtained netlist:
+Screenshot for GLS netlist:
 
 ![7_GLS_netlist_bad_mux](https://github.com/tgupta10/VSD_HDP/assets/86391769/d40ddfd9-dc24-47a1-ac5c-0201ac3fce19)
 
 	
-I used the below commands to carry out GLS of bad_mux.v:
+Steps followed to run GLS simulation of bad_mux.v:
 	
 ```bash
 iverilog <path to verilog model: ../mylib/verilog_model/primitives.v> <path to sky130_fd_sc_hd__tt_025C_1v80.lib: ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib> <name netlist: bad_mux_net.v> <name testbench: tb_bad_mux.v>
@@ -832,7 +838,7 @@ iverilog <path to verilog model: ../mylib/verilog_model/primitives.v> <path to s
 gtkwave tb_bad_mux.vdc
 ```	
 	
-Below is the screenshot of the obtained simulation, and this mismatches with pre-synthesis simulation:
+Snapshot of the wavform from GLS simulation. It clrearly mismatches with RTL simulation:
 	
 ![8_waveform_GLS_bad_mux](https://github.com/tgupta10/VSD_HDP/assets/86391769/1dbb0623-1807-4341-af2d-592c56997fde)
 
@@ -842,7 +848,7 @@ Below is the screenshot of the obtained simulation, and this mismatches with pre
 <details>
  <summary> Simulation, synthesis, and GLS: blocking_caveat.v </summary>
 
-I used the below commands to simulate the design of blocking_caveat.v:
+Steps folowed to run RTL simulation for blocking_caveat.v:
 	
 ```bash
 iverilog <name verilog: blocking_caveat.v> <name testbench: tb_blocking_caveat.v>
@@ -850,12 +856,12 @@ iverilog <name verilog: blocking_caveat.v> <name testbench: tb_blocking_caveat.v
 gtkwave tb_blocking_caveat.vdc
 ```	
 
-Below is the screenshot of the obtained simulation, and as we can see d is seeing the precious values, and hence it is acting as if there was a flop in the circuit which is not the case (incorrect behavior):
+Screenshot for RTL simulation showing incorrect behavior:
 
 ![8_waveform_GLS_blocking_caveat](https://github.com/tgupta10/VSD_HDP/assets/86391769/fefc73c3-d83d-4342-a15d-9e22ad65ad3f)
 
 
-I used the below commands to synthesize the design into a netlist and view the synthesized design of blocking_caveat.v:
+Steps followed to run synthesis and write GLS netlist for blocking_caveat.v:
 	
 ```bash
 yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
@@ -866,17 +872,17 @@ yosys> write_verilog -noattr <name of netlist: blocking_caveat_net.v>
 yosys> show
 ```
 	
-Below is the screenshot of the obtained design:
+Snapshot for Synthesised design:
 
 ![9_waveform_pre_synth_blocking_caveat](https://github.com/tgupta10/VSD_HDP/assets/86391769/cf0ed2cd-0f8c-4562-8ba2-d7daf9ea2aea)
 
 	
-Below is the screenshot of the obtained netlist:
+Snapshot for GLS netlists:
 
 ![11_GLS_netlist_blocking_caveat](https://github.com/tgupta10/VSD_HDP/assets/86391769/7d773524-533a-4a6b-9285-9bf5e580464f)
 
 
-I used the below commands to carry out GLS of blocking_caveat.v:
+Steps followed to run GLS simulation blocking_caveat.v:
 	
 ```bash
 iverilog <path to verilog model: ../mylib/verilog_model/primitives.v> <path to verilog model: ../mylib/verilog_model/sky130_fd_sc_hd.v> <name netlist: blocking_caveat_net.v> <name testbench: tb_blocking_caveat.v>
@@ -884,7 +890,7 @@ iverilog <path to verilog model: ../mylib/verilog_model/primitives.v> <path to v
 gtkwave tb_blocking_caveat.vdc
 ```	
 	
-Below is the screenshot of the obtained simulation, and this mismatches with pre-synthesis simulation due to blocking statement:
+Snapshot of the wavform from GLS simulation. It clrearly mismatches with RTL simulation:
 	
 
 	
