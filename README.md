@@ -916,8 +916,45 @@ Under Process
 # Day 6 
 <details>
  <summary> Objectives </summary>
+To run and match presynthesis and postsynthesis simulations on my choice of Design. 
+I have chosen to implement RISCV RV32I Instruction set in RTL. 
+</details>
+
+<details>
+ <summary> Introduction to RISCV RV32I </summary>
+This project provides an insight into the working of a few important instructions of the instruction set of a Single cycle Reduced Instruction Set Computer - Five(RISC-V) Instruction Set Architecture suitable for use across wide-spectrum of Applications from low power embedded devices to high performance Cloud based Server processors. The base RISC-V is a 32-bit processor with 31 general-purpose registers, so all the instructions are 32-bit long. Some Applications where the RISC-V processors have begun to make some significant threads are in Artificial intelligence and machine learning, Embedded systems, Ultra Low power processing systems etc.
+</details>
+
+<details>
+ <summary> RISCV Architecture and Instruction set </summary>
+
+<img width="713" alt="image" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/baed30dd-e658-445e-9142-f68b444efd5c">
 
 </details>
+
+<details>
+ <summary> Reference codes and other materials </summary>
+
+The original RTL code and the Testbech is used from following github repository:
+https://github.com/vinayrayapati/rv32i
+
+However there are a few modifications done over this code to achieve our goal for example changing the module name
+
+</details
+
+<details>
+ <summary> RTL simulation (presynthesis) </summary>
+
+Steps used to run this simulation: 
+
+```bash
+iverilog  <name netlist: hdp_riscv_r32i.v> <name testbench: tb_hdp_riscv_r32i.v>
+./a.out
+gtkwave hdp_riscv_r32i.vdc
+```
+
+
+</details
 
 # Day 7 
 <details>
