@@ -3,17 +3,25 @@ This github repository is the summary of the progress resport by tgupta for VSD 
 
 Shortcuts:
 
-[Day 0](#day-0)
+[Day 0: Tool Installation](#day-0)
 
-[Day 1](#day-1)
+[Day 1: Learning - RTL Simulation, Synthesis and waveform](#day-1)
 
-[Day 2](#day-2)
+[Day 2: Learning - Multiple module and Sub module Synthesis](#day-2)
 
-[Day 3](#day-3)
+[Day 3: Learning - Optimization in synthesys for combinational and Sequential logic](#day-3)
 
-[Day 4](#day-4)
+[Day 4: Learning - Gate Level simulations](#day-4)
 
 [Day 5](#day-5)
+
+[Day 6: Implementation - RiscV RV32I presynthesis and post Synthesis](#day-6)
+
+[Day 7: Learning - Basic STA and SDC format](#day-7)
+
+[Day 8: Learning - Clock modelling and writing constraints](#day-8)
+
+[Day 9: Implementation - Writing constraints to RiscV RV32I](#day-9)
 
 # Day 0
 
@@ -898,6 +906,32 @@ Snapshot of the wavform from GLS simulation. It clrearly mismatches with RTL sim
 
 # Day 5 
 
+<details>
+ <summary> Objectives </summary>
+
+Under Process
+
+</details>
+
+# Day 6 
+<details>
+ <summary> Objectives </summary>
+
+</details>
+
+# Day 7 
+<details>
+ <summary> Objectives </summary>
+
+</details>
+
+# Day 8 
+<details>
+ <summary> Objectives </summary>
+
+</details>
+
+# Day 9 
 <details>
  <summary> Objectives </summary>
 
