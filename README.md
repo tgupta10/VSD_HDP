@@ -940,7 +940,7 @@ https://github.com/vinayrayapati/rv32i
 
 However there are a few modifications done over this code to achieve our goal for example changing the module name
 
-</details
+</details>
 
 <details>
  <summary> RTL simulation (presynthesis) </summary>
@@ -954,7 +954,7 @@ gtkwave hdp_riscv_r32i.vdc
 ```
 
 
-</details
+</details>
 
 # Day 7 
 <details>
