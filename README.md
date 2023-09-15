@@ -1064,17 +1064,40 @@ NOTE : POST SYNTHESIS NOT MATCHING CURRENTLY !!! STILL NEED TO FIX !!!
 # Day 7 
 <details>
  <summary> Objectives </summary>
-
+To Learn basics of STA.
+To understand constraints and .sdc format 
+To learn basic dc_shell commands.
+	
 </details>
 
 # Day 8 
 <details>
  <summary> Objectives </summary>
 
+To Learn Advance concepts of writing constraints.
+To learn writing constraints for sample designs.
+
 </details>
 
 # Day 9 
 <details>
  <summary> Objectives </summary>
+
+To write constraints for my design hdp_riscv_rv32i.
+We will use open STA for running the timing analysis on the constraints file we have deveoped. 
+
+</details>
+
+<details>
+ <summary> Constraints for my design hdp_riscv_rv32i </summary>
+
+UNDER DEVELOPMENT !! 
+
+</details>
+
+<details>
+ <summary> script used for STA using open STA tool </summary>
+
+UNDER DEVELOPMENT !! 
 
 </details>
