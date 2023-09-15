@@ -1065,8 +1065,25 @@ NOTE : POST SYNTHESIS NOT MATCHING CURRENTLY !!! STILL NEED TO FIX !!!
 <details>
  <summary> Objectives </summary>
 To Learn basics of STA.
+
 To understand constraints and .sdc format 
+
 To learn basic dc_shell commands.
+	
+</details>
+
+<details>
+ <summary> Basics of STA </summary>
+	
+</details>
+
+<details>
+ <summary> Constraints and .sdc format </summary>
+	
+</details>
+
+<details>
+ <summary> basic dc_shell commands </summary>
 	
 </details>
 
@@ -1075,7 +1092,18 @@ To learn basic dc_shell commands.
  <summary> Objectives </summary>
 
 To Learn Advance concepts of writing constraints.
+
 To learn writing constraints for sample designs.
+
+</details>
+
+<details>
+ <summary> Advance concepts of writing constraints </summary>
+
+</details>
+
+<details>
+ <summary> Writing constraints for sample design lab 8  </summary>
 
 </details>
 
@@ -1084,6 +1112,7 @@ To learn writing constraints for sample designs.
  <summary> Objectives </summary>
 
 To write constraints for my design hdp_riscv_rv32i.
+
 We will use open STA for running the timing analysis on the constraints file we have deveoped. 
 
 </details>
