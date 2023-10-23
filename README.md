@@ -917,18 +917,34 @@ Under Process
 <details>
  <summary> Objectives </summary>
 To run and match presynthesis and postsynthesis simulations on my choice of Design. 
-I have chosen to implement RISCV RV32I Instruction set in RTL. 
+I have chosen to implement a FIFO design in RTL. 
 </details>
 
 <details>
- <summary> Introduction to RISCV RV32I </summary>
-This project provides an insight into the working of a few important instructions of the instruction set of a Single cycle Reduced Instruction Set Computer - Five(RISC-V) Instruction Set Architecture suitable for use across wide-spectrum of Applications from low power embedded devices to high performance Cloud based Server processors. The base RISC-V is a 32-bit processor with 31 general-purpose registers, so all the instructions are 32-bit long. Some Applications where the RISC-V processors have begun to make some significant threads are in Artificial intelligence and machine learning, Embedded systems, Ultra Low power processing systems etc.
+ <summary> Introduction to FIFO- First in First out </summary>
+In this day, almost every digital component works on a clock and it is very common that the sub-systems exchange data for computational and operational needs. An intermediary becomes necessary if:
+	
+- The data produced and the data consumer operate on different clock frequencies
+	- If the data is being produced at a slower speed than the data is being consumed ***(f_write_clk < f_read_clk)*** the data transfer can take place through a single data register followed by asynchronous data synchronization methods (handshake or 2-clock synchronization)
+	- If the data is being produced at a higher speed than the data is being consumed ***(f_write_clk > f_read_clk)*** the data transfer needs buffering which can be implemented through an asynchronous FIFO. The depth of the FIFO depends the write and read clock and the maximum data burst length.
+- The data producer and the data consumer have a skew between their clocks
+	- If the data is being produced at the same speed as the data is being consumed ***(f_write_clk = f_read_clk)*** and there is a skew between the producer and the consumer clock, the data can be transferred through a lock-up latch/register to overcome the skew
+- There is a skew between the data production burst and data reception burst
+	- If the producer and consumer operate at the same clock but have a large skew between when a burst of data is produced and when the burst of data is consumed. In such scenario, the produced data needs to be buffered and the sequence of transfer needs to be preserved, then a synchronous FIFO can be used. The depth of such FIFO is decided by the maximum burst length
+
+
+Additional information can be found at [FIFO Architecture, Functions, and Applications](https://www.ti.com/lit/an/scaa042a/scaa042a.pdf)
+
+Additional info on deciding the fifo depth can be found at [Calculation of FIFO Depth](https://hardwaregeeksblog.files.wordpress.com/2016/12/fifodepthcalculationmadeeasy2.pdf)
 </details>
 
 <details>
- <summary> RISCV Architecture and Instruction set </summary>
+ <summary> Synchrounous FIFO </summary>
 
-<img width="713" alt="image" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/baed30dd-e658-445e-9142-f68b444efd5c">
+The type of FIFOs which have common write and read clock are called synchronous FIFO. Synchronous FIFOs are very common in a processor/controller ICs which work on a common system clock. Since all the sub-systems work on the same system clock they can make use of sync-FIFOs with a possible need for skew handling.
+
+![fifo_sync](https://github.com/tgupta10/VSD_HDP/assets/86391769/0d4800e1-b769-4c3f-a815-643f4b57b4ac)
+
 
 </details>
 
@@ -936,9 +952,10 @@ This project provides an insight into the working of a few important instruction
  <summary> Reference codes and other materials </summary>
 
 The original RTL code and the Testbech is used from following github repository:
-https://github.com/vinayrayapati/rv32i
 
-However there are a few modifications done over this code to achieve our goal for example changing the module name
+[https://github.com/sumukhathrey/Verilog_ASIC_Design#contents]
+
+However there are a few modifications done over this code to achieve our goal.
 
 </details>
 
