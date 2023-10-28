@@ -1137,6 +1137,7 @@ report_checks -fields {nets cap slew input_pins} -digits {5} > timing.rpt
 
 Following is the snapshot for final timing report.
 
+<img width="1202" alt="timing_report" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/fccf29f3-afa7-4b15-98ef-3a0b62b90114">
 
 
 </details>
