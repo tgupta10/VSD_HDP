@@ -1085,3 +1085,11 @@ Following are the contents for run_sta.tcl
 ```
 
 </details>
+
+<details>
+ <summary> Timing report </summary>
+
+Following is the snapshot for final timing report.
+
+
+</details>
