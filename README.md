@@ -15,13 +15,13 @@ Shortcuts:
 
 [Day 5](#day-5)
 
-[Day 6: Implementation - RiscV RV32I presynthesis and post Synthesis](#day-6)
+[Day 6: Implementation - FIFO presynthesis and post Synthesis](#day-6)
 
 [Day 7: Learning - Basic STA and SDC format](#day-7)
 
 [Day 8: Learning - Clock modelling and writing constraints](#day-8)
 
-[Day 9: Implementation - Writing constraints to RiscV RV32I](#day-9)
+[Day 9: Implementation - Writing constraints to FIFO design](#day-9)
 
 # Day 0
 
