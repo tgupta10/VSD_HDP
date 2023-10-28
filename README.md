@@ -1058,22 +1058,30 @@ To learn writing constraints for sample designs.
 <details>
  <summary> Objectives </summary>
 
-To write constraints for my design hdp_riscv_rv32i.
+To write constraints for my design FIFO.v .
 
-We will use open STA for running the timing analysis on the constraints file we have deveoped. 
-
-</details>
-
-<details>
- <summary> Constraints for my design hdp_riscv_rv32i </summary>
-
-UNDER DEVELOPMENT !! 
+We will use open STA for running the timing analysis on the constraints file we have developed. 
 
 </details>
 
 <details>
- <summary> script used for STA using open STA tool </summary>
+ <summary> Constraints for my design FIFO </summary>
 
-UNDER DEVELOPMENT !! 
+Following are the constraints we have written to our FIFO design. 
+
+```
+
+```
+
+</details>
+
+<details>
+ <summary> script "run_sta.tcl" used for STA using open STA tool </summary>
+
+Following are the contents for run_sta.tcl
+
+```
+
+```
 
 </details>
