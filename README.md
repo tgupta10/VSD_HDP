@@ -1070,6 +1070,41 @@ We will use open STA for running the timing analysis on the constraints file we 
 Following are the constraints we have written to our FIFO design. 
 
 ```
+create_clock -name myclk -period 10 [get_ports clk] 
+set_clock_latency -source 1 [get_clocks myclk]
+set_clock_latency 2 [get_clocks myclk]
+set_clock_uncertainty 0.6 [get_clocks myclk]
+set_clock_uncertainty 0.1 [get_clocks myclk]
+
+set_input_transition -max 0.4 [get_ports rst]
+set_input_transition -min 0.2 [get_ports rst]
+
+set_input_transition -max 0.4 [get_ports ren]
+set_input_transition -min 0.2 [get_ports ren]
+
+set_input_transition -max 0.4 [get_ports wen]
+set_input_transition -min 0.2 [get_ports wen]
+
+set_input_transition -max 0.4 [get_ports din]
+set_input_transition -min 0.2 [get_ports din]
+
+set_input_delay -max 3 -clock  myclk [get_ports rst]
+set_input_delay -min 1 -clock  myclk [get_ports rst]
+
+set_input_delay -max 3 -clock  myclk [get_ports ren]
+set_input_delay -min 1 -clock  myclk [get_ports ren]
+
+set_input_delay -max 3 -clock  myclk [get_ports wen]
+set_input_delay -min 1 -clock  myclk [get_ports wen]
+
+set_input_delay -max 3 -clock  myclk [get_ports din]
+set_input_delay -min 1 -clock  myclk [get_ports din]
+
+set_output_delay -max 3 -clock myclk [get_ports dout]
+set_output_delay -min 1 -clock myclk [get_ports dout]
+
+set_load -max 0.2  [get_ports dout]
+set_load -min 0.05 [get_ports dout]
 
 ```
 
@@ -1081,6 +1116,17 @@ Following are the constraints we have written to our FIFO design.
 Following are the contents for run_sta.tcl
 
 ```
+read_liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+
+#read_verilog FIFO.v
+read_verilog fifo_synth.v
+
+#link_design fifo
+link_design fifo_synth
+
+read_sdc fifo_design.sdc
+
+report_checks -fields {nets cap slew input_pins} -digits {5} > timing.rpt
 
 ```
 
@@ -1090,6 +1136,7 @@ Following are the contents for run_sta.tcl
  <summary> Timing report </summary>
 
 Following is the snapshot for final timing report.
+
 
 
 </details>
