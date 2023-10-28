@@ -965,82 +965,14 @@ However there are a few modifications done over this code to achieve our goal.
 Steps used to run this simulation: 
 
 ```bash
-iverilog  <name netlist: hdp_riscv_r32i.v> <name testbench: tb_hdp_riscv_r32i.v>
+iverilog  <name netlist: FIFO.v> <name testbench: tb_FIFO.v>
 ./a.out
-gtkwave hdp_riscv_r32i.vdc
+gtkwave fifo.vcd
 ```
 
- The output waveform showing the instructions performed in a 5-stage pipelined architecture.
+ The output waveform showing simulation of fifo before synthesis.
  
- Instruction 1:add r6,r2,r1
- 
-![Instruction1](https://github.com/tgupta10/VSD_HDP/assets/86391769/b1cff01c-3d1d-48b2-a591-85c8a6136f68)
-
-
- Instruction 2:sub r7,r1,r2
- 
-![Instruction2](https://github.com/tgupta10/VSD_HDP/assets/86391769/11dd8729-32ff-45c0-8934-6febd2378fe5)
-
-
- Instruction 3:and r8,r1,r3
- 
-![Instruction3](https://github.com/tgupta10/VSD_HDP/assets/86391769/df4fc79c-95ec-49f5-a34a-a27b29804099)
-
-
- Instruction 4:or r9,r2,r5
- 
-![Instruction4](https://github.com/tgupta10/VSD_HDP/assets/86391769/36ce2acd-8ade-4756-9962-476ca314ba6c)
-
-
- Instruction 5:xor r10,r1,r4
- 
-![Instruction5](https://github.com/tgupta10/VSD_HDP/assets/86391769/ce65280f-75ff-4632-93e9-bc0f2314fd93)
-
- Instruction 6:slt r11,r2,r4
- 
-![Instruction6](https://github.com/tgupta10/VSD_HDP/assets/86391769/ae679476-e281-4b6b-8bfb-f4d5b7e0f0dc)
-
-
- Instruction 7:addi r12,r4,5
- 
-![Instruction7](https://github.com/tgupta10/VSD_HDP/assets/86391769/f9c20a24-5ef7-4435-8e14-e2b4049834e6)
-
-
- Instruction 8:sw r3,r1,2
- 
-![Instruction8](https://github.com/tgupta10/VSD_HDP/assets/86391769/21c5e5d7-b544-4525-84c9-2b0fae628619)
-
-
- Instruction 9:lw r13,r1,2
- 
-![Instruction9](https://github.com/tgupta10/VSD_HDP/assets/86391769/89380efe-3de9-4d18-8c67-f603bd462c25)
-
-
- Instruction 10:beq r0,r0,15
- 
- After branching, performing
- Instruction 11:add r14,r2,r2
- 
-![Instruction10](https://github.com/tgupta10/VSD_HDP/assets/86391769/a6cb7298-98f3-4b11-a25d-ba1495b2b87a)
-
-
- Instruction 12:bne r0,r1,20
- 
- After branching, performing
- Instruction 13:addi r12,r4,5
- 
-
-
- Instruction 14:sll r15,r1,r2(2)
- 
- 
-
- Instruction 15:srl r16,r14,r2(2)
- 
- 
- Full 5-stage instruction pipeline and pc-increment description Waveform
- 
-![full_5stage](https://github.com/tgupta10/VSD_HDP/assets/86391769/a62c5c06-6947-483e-81eb-d2f1816ee777)
+<img width="1206" alt="waveform_pre_synth" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/748d22f4-98db-43de-9c7d-4f58b3e0ace4">
 
 
 </details> 
@@ -1051,30 +983,28 @@ gtkwave hdp_riscv_r32i.vdc
 Steps used to run post synthesis
 
 ```
-read_liberty -lib lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-read_verilog hdp_riscv_rv32i.v
-synth -top hdp_riscv_rv32i	
-dfflibmap -liberty lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-proc ; opt
-abc -liberty lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-clean
-flatten
-write_verilog -noattr hdp_riscv_rv32i_synth.v
+yosys> read_liberty -lib <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> read_verilog FIFO.v
+yosys> synth -top FIFO
+yosys> dfflibmap -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> abc -liberty <path to sky130_fd_sc_hd__tt_025C_1v80.lib>
+yosys> opt_clean -purge
+yosys> flatten
+yosys> write_verilog -noattr fifo_synth.v
 ```
 
 Steps used to run gate level synthesis
 
 ```
-iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 ../verilog_model/primitives.v ../verilog_model/sky130_fd_sc_hd.v hdp_riscv_rv32i_synth.v tb_hdp_riscv_rv32i.v
+iverilog  ../verilog_model/primitives.v ../verilog_model/sky130_fd_sc_hd.v fifo_synth.v tb_synth_FIFO.v
 ./a.out
-gtkwave hdp_riscv_rv32i.vcd
+gtkwave fifo_synth.vcd
 
 ```
 
-NOTE : POST SYNTHESIS NOT MATCHING CURRENTLY !!! STILL NEED TO FIX !!!
+The output waveform showing simulation of fifo after synthesis.
 
-![post_synth_error](https://github.com/tgupta10/VSD_HDP/assets/86391769/b38573f8-9f0a-4f2c-9f28-0d46a76448b1)
-
+<img width="1210" alt="waveform_post_synth" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/c5f51a5a-2411-41df-9157-5a6aa3b27192">
 
 </details>
 
