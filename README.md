@@ -23,6 +23,18 @@ Shortcuts:
 
 [Day 9: Implementation - Writing constraints to FIFO design](#day-9)
 
+[Day 10: SPICE](#day-10)
+
+[Day 11: SPICE](#day-11)
+
+[Day 12: SPICE](#day-12)
+
+[Day 13: SPICE](#day-13)
+
+[Day 14: SPICE](#day-14)
+
+[Day 15: SPICE](#day-15)
+
 # Day 0
 
 <details>
@@ -1138,6 +1150,213 @@ report_checks -fields {nets cap slew input_pins} -digits {5} > timing.rpt
 Following is the snapshot for final timing report.
 
 <img width="1202" alt="timing_report" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/fccf29f3-afa7-4b15-98ef-3a0b62b90114">
+
+
+</details>
+
+# Day 10 
+<details>
+ <summary> Objectives </summary>
+	
+TO study MOS charactersitcs like Ids vs Vds. 
+	
+</details>
+
+<details>
+ <summary> Concepts </summary>
+
+</details>
+
+<details>
+ <summary> SPICE deck  </summary>
+
+Following are contents of our SPICE deck used in simulation.
+
+
+```plaintext
+.LIB "<name: xxx>.mod" CMOS_MODELS
+R<name> <1st node> <second node> <value>
+M<name> <drain> <gate> <source> <bulk> <name in tech file> w=<value> L=<value>
+V<name> <1st node> <second node> <value>
+C<name> <1st node> <second node> <value>
+```
+
+```plaintext
+.lib cmos_models
+.Model <name that should match in netlist> NMOS (TOX = .. VTH0 = .. U0 = .. GAMMA1 = ..)
+.Model <name that should match in netlist> PMOS (TOX = .. VTH0 = .. U0 = .. GAMMA1 = ..)
+.endl
+```
+
+```plaintext
+.<mode: dc> <voltage node to sweep: Vin> <start value: 0> <end value: 2.5> <steps: 0.1> <voltage node to sweep: Vdd> <start value: 0> <end value: 2.5> <steps: 2.5>
+```
+
+
+ngspice commands used.
+
+```plaintext
+ngspice <spice file name>
+plot -<name node>
+```
+
+</details>
+
+<details>
+ <summary> Simulation: Lab 1  </summary>
+<img width="1198" alt="1_ids_vs_vgs" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/d3a9da6e-37b2-4b21-8736-b92525905f79">
+
+</details>
+
+
+# Day 11 
+<details>
+ <summary> Objectives </summary>
+To deep dive further into MOS charactersctics. 
+	
+To study velocity saturation in shot channel MOS devices. 
+	
+</details>
+
+<details>
+ <summary> Concepts </summary>
+
+</details>
+
+<details>
+ <summary> Simulation: Lab 2a  </summary>
+
+Following are the ngspice sommands used to see results:
+
+```plaintext
+ngspice <name: day2_nfet_idvds_L015_W039.spice>
+plot -<name: vdd#branch>
+```
+<img width="864" alt="1_lab2a" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/b38e0490-1e84-4324-aa19-a9fd32b495a6">
+
+
+</details>
+
+<details>
+ <summary> Simulation: Lab 2b  </summary>
+
+Following are the ngspice sommands used to see results:
+	
+```plaintext
+ngspice <name: day2_nfet_idvgs_L015_W039.spice>
+plot -<name: vdd#branch>
+```
+
+<img width="795" alt="1_lab2b" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/a168ed1d-2bb8-4d76-bbdd-853301096e84">
+
+
+</details>
+
+# Day 12 
+<details>
+ <summary> Objectives </summary>
+To study VTC curve in CMOS. 
+	
+To see transient response of time varying input. 
+	
+</details>
+
+<details>
+ <summary> Concepts </summary>
+
+</details>
+
+<details>
+ <summary> Simulation : Lab 3a  </summary>
+
+ngspice commands used:
+
+ ```plaintext
+ngspice <name: day3_inv_vtc_Wp084_Wn036.spice>
+plot <name: out> vs <name: in>
+```
+
+<img width="822" alt="1_lab3a" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/1a666e1b-d44d-4b7c-b415-eced5264f35d">
+
+
+</details>
+
+<details>
+ <summary> Simulation : Lab 3b  </summary>
+
+ ngspice commands used:
+
+<img width="826" alt="2_lab3b" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/f05e957b-bb27-4d96-86ec-baca470a86a8">
+
+
+</details>
+
+# Day 13 
+<details>
+ <summary> Objectives </summary>
+
+To study Noise Margin in a CMOS device.
+
+</details>
+
+<details>
+ <summary> Concepts </summary>
+
+</details>
+
+<details>
+ <summary> Simulation: Lab 4  </summary>
+
+ngspice command used to plot the results: 
+
+```plaintext
+ngspice <name: day4_inv_noisemargin_wp1_wn036.spice>
+plot <name: out> vs <name: in>
+```
+
+<img width="803" alt="1_lab4" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/ea6d292f-8fa8-4017-80db-53c86d23df10">
+
+
+</details>
+
+# Day 14 
+<details>
+ <summary> Objectives </summary>
+	
+Here we are going to learn CMOS charactersitcs : Supply Variation , Device Variation like process variation and gate oxide variation and its effects 
+	
+</details>
+
+<details>
+ <summary> Concepts </summary>
+
+</details>
+
+<details>
+ <summary> Simulation: Lab 5a  </summary>
+
+ngspice command used to plot the results: 
+
+```plaintext
+ngspice <name: day5_inv_supplyvariation_Wp1_Wn036.spice>
+```
+
+<img width="1279" alt="1_lab5a" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/dc63a7b4-72c1-4b02-98a0-a60f7a354269">
+
+
+</details>
+
+<details>
+ <summary> Simulation: Lab 5b  </summary>
+	
+ngspice command used to plot the results: 
+
+```plaintext
+ngspice <name: day5_inv_devicevariation_wp7_wn042.spice>
+plot <name: out> vs <name: in>
+```
+
+<img width="798" alt="2_lab5b" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/90646c57-698d-4be2-a4af-a9b25682b64d">
 
 
 </details>
