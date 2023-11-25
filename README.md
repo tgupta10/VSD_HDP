@@ -1379,6 +1379,54 @@ The skywater tt, ss and ff corners are found in https://github.com/Geetima2021/v
  <summary> Constraints </summary>
 
  ```plaintext
+create_clock -name myclk -period 10 [get_ports clk] 
+set_clock_latency -source 1 [get_clocks myclk]
+set_clock_latency 2 [get_clocks myclk]
+set_clock_uncertainty 0.6 [get_clocks myclk]
+set_clock_uncertainty 0.1 [get_clocks myclk]
+
+#set_driving_cell -lib_cell sky130_fd_sc_hd__buf_4 [all_inputs]
+set_input_transition -max 0.4 [get_ports rst]
+set_input_transition -min 0.2 [get_ports rst]
+
+set_input_transition -max 0.4 [get_ports ren]
+set_input_transition -min 0.2 [get_ports ren]
+
+set_input_transition -max 0.4 [get_ports wen]
+set_input_transition -min 0.2 [get_ports wen]
+
+set_input_transition -max 0.4 [get_ports din]
+set_input_transition -min 0.2 [get_ports din]
+
+set_input_delay -max 3 -clock  myclk [get_ports rst]
+set_input_delay -min 1 -clock  myclk [get_ports rst]
+
+set_input_delay -max 3 -clock  myclk [get_ports ren]
+set_input_delay -min 1 -clock  myclk [get_ports ren]
+
+set_input_delay -max 3 -clock  myclk [get_ports wen]
+set_input_delay -min 1 -clock  myclk [get_ports wen]
+
+set_input_delay -max 3 -clock  myclk [get_ports din]
+set_input_delay -min 1 -clock  myclk [get_ports din]
+
+set_output_delay -max 3 -clock myclk [get_ports full]
+set_output_delay -min 1 -clock myclk [get_ports full]
+
+set_output_delay -max 3 -clock myclk [get_ports empty]
+set_output_delay -min 1 -clock myclk [get_ports empty]
+
+set_output_delay -max 3 -clock myclk [get_ports dout]
+set_output_delay -min 1 -clock myclk [get_ports dout]
+
+set_load -max 0.2  [get_ports full]
+set_load -min 0.05 [get_ports full]
+
+set_load -max 0.2  [get_ports empty]
+set_load -min 0.05 [get_ports empty]
+
+set_load -max 0.2  [get_ports dout]
+set_load -min 0.05 [get_ports dout]
 
 
 ```
@@ -1391,8 +1439,19 @@ The skywater tt, ss and ff corners are found in https://github.com/Geetima2021/v
 Uploaded in "STA" directory.
 
 ```plaintext
-
-
+run_sta_ff_100C_1v65.tcl
+run_sta_ff_100C_1v95.tcl
+run_sta_ff_n40C_1v56.tcl
+run_sta_ff_n40C_1v65.tcl
+run_sta_ff_n40C_1v76.tcl
+run_sta_ss_100C_1v40.tcl
+run_sta_ss_100C_1v60.tcl
+run_sta_ss_n40C_1v28.tcl
+run_sta_ss_n40C_1v35.tcl
+run_sta_ss_n40C_1v40.tcl
+run_sta_ss_n40C_1v44.tcl
+run_sta_ss_n40C_1v76.tcl
+run_sta_tt_025C_1v80.tcl
 ```
 
 
