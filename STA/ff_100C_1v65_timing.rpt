@@ -1,0 +1,71 @@
+Startpoint: _288_ (rising edge-triggered flip-flop clocked by myclk)
+Endpoint: _288_ (rising edge-triggered flip-flop clocked by myclk)
+Path Group: myclk
+Path Type: min
+
+Fanout      Cap     Slew    Delay     Time   Description
+--------------------------------------------------------------------------------
+                  0.000    0.000    0.000   clock myclk (rise edge)
+                           3.000    3.000   clock network delay (ideal)
+                  0.000    0.000    3.000 ^ _288_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                  0.042    0.232    3.232 ^ _288_/Q (sky130_fd_sc_hd__dfxtp_1)
+    2    0.004                              mem[2][0] (net)
+                  0.042    0.000    3.232 ^ _230_/A0 (sky130_fd_sc_hd__mux2_1)
+                  0.032    0.091    3.323 ^ _230_/X (sky130_fd_sc_hd__mux2_1)
+    1    0.002                              _028_ (net)
+                  0.032    0.000    3.323 ^ _288_/D (sky130_fd_sc_hd__dfxtp_1)
+                                    3.323   data arrival time
+
+                  0.000    0.000    0.000   clock myclk (rise edge)
+                           3.000    3.000   clock network delay (ideal)
+                           0.100    3.100   clock uncertainty
+                           0.000    3.100   clock reconvergence pessimism
+                                    3.100 ^ _288_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                          -0.028    3.072   library hold time
+                                    3.072   data required time
+--------------------------------------------------------------------------------
+                                    3.072   data required time
+                                   -3.323   data arrival time
+--------------------------------------------------------------------------------
+                                    0.251   slack (MET)
+
+
+Startpoint: _321_ (rising edge-triggered flip-flop clocked by myclk)
+Endpoint: full (output port clocked by myclk)
+Path Group: myclk
+Path Type: max
+
+Fanout      Cap     Slew    Delay     Time   Description
+--------------------------------------------------------------------------------
+                  0.000    0.000    0.000   clock myclk (rise edge)
+                           3.000    3.000   clock network delay (ideal)
+                  0.000    0.000    3.000 ^ _321_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                  0.231    0.365    3.365 ^ _321_/Q (sky130_fd_sc_hd__dfxtp_1)
+   12    0.028                              wptr[1] (net)
+                  0.231    0.000    3.365 ^ _160_/B (sky130_fd_sc_hd__xnor2_1)
+                  0.174    0.147    3.511 ^ _160_/Y (sky130_fd_sc_hd__xnor2_1)
+    3    0.007                              _079_ (net)
+                  0.174    0.000    3.511 ^ _161_/C (sky130_fd_sc_hd__nand3_1)
+                  0.066    0.077    3.589 v _161_/Y (sky130_fd_sc_hd__nand3_1)
+    1    0.002                              _080_ (net)
+                  0.066    0.000    3.589 v _164_/A (sky130_fd_sc_hd__nor2_1)
+                  2.813    2.032    5.621 ^ _164_/Y (sky130_fd_sc_hd__nor2_1)
+    2    0.203                              full (net)
+                  2.813    0.000    5.621 ^ full (out)
+                                    5.621   data arrival time
+
+                  0.000   10.000   10.000   clock myclk (rise edge)
+                           3.000   13.000   clock network delay (ideal)
+                          -0.100   12.900   clock uncertainty
+                           0.000   12.900   clock reconvergence pessimism
+                          -3.000    9.900   output external delay
+                                    9.900   data required time
+--------------------------------------------------------------------------------
+                                    9.900   data required time
+                                   -5.621   data arrival time
+--------------------------------------------------------------------------------
+                                    4.279   slack (MET)
+
+
+wns 0.00
+tns 0.00
