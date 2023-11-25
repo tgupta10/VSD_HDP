@@ -1,0 +1,13 @@
+read_liberty timing_libs/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+#read_verilog FIFO.v
+read_verilog fifo_synth.v
+
+#link_design fifo
+link_design fifo_synth
+
+read_sdc fifo_design.sdc
+
+report_checks -fields {nets cap slew input_pins} -digits {3} -path_delay min_max > tt_025C_1v80_timing.rpt
+report_wns >> tt_025C_1v80_timing.rpt
+report_tns >> tt_025C_1v80_timing.rpt
