@@ -35,6 +35,8 @@ Shortcuts:
 
 [Day 15: SPICE](#day-15)
 
+[Day 16 STA results with PVT variations on my FIFO design](#day-16)
+
 # Day 0
 
 <details>
@@ -1357,6 +1359,50 @@ plot <name: out> vs <name: in>
 ```
 
 <img width="798" alt="2_lab5b" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/90646c57-698d-4be2-a4af-a9b25682b64d">
+
+
+</details>
+
+# Day 16 
+<details>
+ <summary> Objectives </summary>
+
+To perform post-synthesys STA on my design using different ss (slow slow),ff (fast fast),tt (typical typical) PVT corners. 
+
+To reported the WNS (Worst Negative Slack), TNS (Total Negative Slack = sum of the negative slack paths), and WHS (Worst Hold Slack) values. 
+
+The skywater tt, ss and ff corners are found in https://github.com/Geetima2021/vsdpcvrd.git
+ 
+</details>
+
+<details>
+ <summary> Constraints </summary>
+
+ ```plaintext
+
+
+```
+
+</details>
+
+<details>
+ <summary> Sta scripts I have used  </summary>
+
+Uploaded in "STA" directory.
+
+```plaintext
+
+
+```
+
+
+</details>
+
+<details>
+ <summary> PVT variation curve for my FIFO design  </summary>
+
+ <img width="270" alt="Table_WNS_WHS_TNS" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/a9d01006-70e3-48cc-9675-1bf28e486d30">
+<img width="701" alt="PVT_variation_graph" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/71538823-53f0-49cc-8251-b05434c8ffc1">
 
 
 </details>
