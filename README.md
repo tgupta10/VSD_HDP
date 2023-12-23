@@ -37,6 +37,8 @@ Shortcuts:
 
 [Day 16 STA results with PVT variations on my FIFO design](#day-16)
 
+[Day 17 RTL to GDS using OpenLane on my FIFO design](#day-17)
+
 # Day 0
 
 <details>
@@ -1465,3 +1467,46 @@ run_sta_tt_025C_1v80.tcl
 
 
 </details>
+
+# Day 17
+
+<details>
+ <summary> Objectives </summary>
+
+To run complete RTL to GDS flow using Openlane on my fifo design.
+
+</details>
+
+<details>
+ <summary> Synthesis </summary>
+		
+Commands to invoke Openlane and run synthesis :
+	
+```bash
+make mount
+./flow.tcl -interactive
+prep -design fifo
+
+run_synthesis
+```	
+
+The obtained STA report is below (hold (met slack), setup (met slack), and power): 
+	
+<img width="1216" alt="1_synth_log" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/e4125a13-fe97-408c-a579-b6af959a2518">
+<img width="1207" alt="5_sta_rep" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/557bbd43-ace5-424c-b253-c0e2208d3999">
+<img width="1211" alt="4_sta_rep" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/03e60257-9b1e-45fb-a861-94802c640dd2">
+<img width="1202" alt="3_sta_rep" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/51b7073c-71a2-49d7-87f3-aacad8b81b23">
+<img width="1201" alt="2_sta_rep" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/1968cf17-2ff3-4126-b368-ed81b442ee6b">
+
+	
+
+To calculate the flop ratio, I used the following formula, and the numbers are extracted from the report whose screenshot is included below:
+	
+```bash	
+Flop ratio = # of D Flipflops / Total # of cells
+Flop ratio = 75/316 = 0.237 = 23.7%
+```
+	
+</details>
+
+
