@@ -1508,5 +1508,119 @@ Flop ratio = 75/316 = 0.237 = 23.7%
 ```
 	
 </details>
+	
+<details>
+	
+<summary> Floorplan: fifo </summary>
+	
+Command to run floorplan: 
+	
+```bash
+run_floorplan
+```
+	
+command to invoke magic to view the layout of the floorplan.
+	
+```bash
+magic read -T /home/tgupta/Desktop/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.min.lef def read fifo.def &
+```
+	
+A screenshot of the obtained layout is below:	
+	
+<img width="1216" alt="6_floor_plan" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/3a1faa34-fa1a-4e19-9f8a-b323779c2006">
+
+</details>
 
 
+<details>
+	
+<summary> Placement: fifo </summary>
+	
+Command to run floorplan: 
+	
+```bash
+run_placement
+```
+	
+command to invoke magic to view the layout of the floorplan.
+	
+```bash
+magic read -T /home/tgupta/Desktop/open_pdks/sky130/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.min.lef def read fifo.def &
+```
+	
+A screenshot of the obtained layout is below after placement:	
+
+<img width="1229" alt="7_placement" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/f9ab5a36-a55b-486a-ac3e-7b9110335783">
+
+</details>
+
+<details>
+	
+<summary> CTS: fifo </summary>	
+	
+After synthesis, floorplan, and placement. 
+Command used to run CTS:
+	
+```bash
+run_cts
+```
+	
+<img width="1226" alt="9_cts" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/e8c8687d-c7ce-4f2b-8129-0196b3d9f0b5">
+<img width="1218" alt="8_cts" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/f0e37590-67c3-4d13-8b5f-dc8e928ded04">
+
+	
+</details>
+
+
+<details>
+	
+<summary> PDN and Routing: fifo </summary>
+	
+After CTS, I ran PDN and routing.
+Commands used for PDN and routing:
+	
+```bash
+gen_pdn
+run_routing
+```
+
+screenshot of global routing log:
+	
+<img width="1217" alt="10_routing" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/eea3afaf-4a87-4291-91f4-0adfe16fd1dd">
+
+
+screenshot of detailed routing log:	
+<img width="1214" alt="11_routing" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/6552b0a5-3633-446d-9e81-33bc9a6961c0">
+
+	
+</details>	
+
+<details>
+	
+<summary> GDSII: fifo </summary>
+	
+To generate the final GDSII file, commands (SPEF extraction, IR drop analysis, streaming out GDSII and generating LEF with magic, lvs, drc, antenna check, erc):
+
+```bash	
+run_parasitics_sta
+run_irdrop_report
+run_magic
+run_magic_spice_export
+run_lvs
+run_magic_drc
+run_antenna_check
+run_erc
+```
+	
+To view the GDSII file in magic, in OpenLane I used the command:
+	
+```bash	
+magic
+```
+
+FACING LVS ERRORS!! WORK ON GOING..
+
+<img width="1208" alt="LVS_errors" src="https://github.com/tgupta10/VSD_HDP/assets/86391769/76387d71-ea49-495f-b366-4615718a9fed">
+
+
+</details>
